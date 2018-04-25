@@ -11,15 +11,14 @@ random_facts = [
     'Der Reese is a real location found in Poland that was used by Nazi scientists during the war.'
 ]
 
-
 map_facts = {
     'nacht': [
-        'cats'
+        ''
     ],
     'verruckt': [
-        'cats'
+        ''
     ],
-    'der_reise': [
+    'der_riese': [
         'Der Reese is a real location found in Poland that was used by Nazi scientists during the war.'
     ],
     'five': [
@@ -54,3 +53,38 @@ map_facts = {
     # '': [],
 }
 
+map_information = {
+    'verruckt': {
+        'quick_revive': 'Can be located in the American\'s side of the starting room.',
+        'juggernog':    'In the starting room next to the book shelf (German side).',
+        'speed_cola':   'In the room between the right balcony and the kitchen.',
+        'double_tap':   'Right next to the MP40 purchase on the German side.'
+    },
+    'shi_no_numa': {
+        'quick_revive': 'For black ops 3, it will spawn in the starting room, to the left of the Sheiva. In Black Ops it randomly spawns in one of the huts.',
+        'juggernog': 'Randomly spawns in one of the huts.',
+        'speed_cola': 'Will spawn randomly in one of the four huts.',
+        'double_tap': 'Will randomly spawn in one of the four huts',
+        'mule_kick': 'Available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum.',
+        'stamin-up': 'Available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum.',
+        'deadshot': 'Available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum.',
+        'widows_wine': 'Available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum.'
+    },
+    'der_riese': {
+        'quick_revive': 'To the right of the entrance of the room of the teleporter Z-C, in Dr. Maxis\' office.',
+        'juggernog': 'In a small hallway to the left of the staircase when going towards the Power Switch from the animal testing area.',
+        'speed_cola': 'In the second courtyard, where the FG42 can be purchased.',
+        'double_tap': 'On the second floor of the automobile garage near the bridge.',
+        'mule_kick': 'Below the path leading towards the teleporter in the automobile garage, next to the box location.'
+    },
+    'kino': {
+        'quick_revive': 'In the starting room by the bar.',
+        'juggernog': 'Located in the theater on the left side through the main doors, next to the Bowie Knife.',
+        'speed_cola': 'In the foyer, close to the MP40 (black ops), or kuda in black ops 3.',
+        'double_tap': 'In the southern part of the alleyway next to a barrier.',
+        'mule_kick': 'Found in the portrrate room, next to the door to the foyer.',
+        'stamin-up': 'Available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum.',
+        'deadshot': 'Available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum.',
+        'widows_wine': 'Available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum.'
+    }
+}

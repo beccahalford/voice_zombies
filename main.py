@@ -2,7 +2,7 @@ from flask import Flask
 from flask_ask import Ask, statement, request, delegate, question
 import random
 
-from facts import random_facts, map_facts
+from facts import random_facts, map_facts, map_information
 
 app = Flask(__name__)
 ask = Ask(app, '/')
@@ -32,7 +32,7 @@ def get_random_fact():
 def get_map_fact(x):
     slots = get_slots()
 
-    if 'map' not in slots:
+    if request.get('dialogState', '') != 'COMPLETED':
         return delegate()
 
     map = slots['map']
@@ -46,8 +46,37 @@ def get_map_fact(x):
     if not len(facts):
         return statement("No facts available for {}".format(map['value']['name']))
 
+    import ipdb
+    ipdb.set_trace()
     fact = random.choice(facts)
     return statement(fact)
+
+
+@ask.intent('PerkLocationIntent')
+def get_map_perk_location():
+    slots = get_slots()
+
+    if request.get('dialogState', '') != 'COMPLETED':
+        return delegate()
+
+
+    map = slots['map']
+    map_id = map['value']['id']
+
+    if map_id == 'nacht':
+        return statement('Nacht Der Untoten does not have any perks.')
+
+    if map_id not in map_information:
+        return statement("Sorry, I could not find the perk location on {}, map unknown".format(map['value']['name']))
+
+    perk = slots['perk']
+    perk_id = perk['value']['id']
+    if perk_id not in map_information[map_id]:
+        return statement("Sorry, this {} is not available in {} ".format(perk['value']['name'], map['value']['name']))
+
+    perk_location = map_information[map_id][perk_id]
+
+    return statement(perk_location)
 
 
 if __name__ == '__main__':
