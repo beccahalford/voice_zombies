@@ -1,23 +1,51 @@
-from flask import Flask
-from flask_ask import Ask, statement, request, delegate, question
+from flask import Flask, render_template
+from flask_ask import Ask, statement, request, delegate, question, session, confirm_slot, elicit_slot, confirm_intent
 import random
 
-from facts import random_facts, map_facts, map_information
+from facts import random_facts, map_facts, map_perk_locations, gobblegum_data
 
 app = Flask(__name__)
 ask = Ask(app, '/')
 
 
 def get_slots():
-    ret = {}
-    slots = request.intent.slots
-    for key in slots.keys():
-        for resolution in slots[key].get('resolutions', {}).get('resolutionsPerAuthority', []):
+    """
+    Get all of our slots out, e.g
+        {
+            "slot_name": {
+                "raw": "Raw Value",
+                "matches": [
+                    {"value": "value", "id": "slot_id"}
+                ],
+                "status": "CONFIRMED"
+            }
+        }
+    """
+    slots = {}
+    # Dig through each slot
+    for name, slot in request.intent.slots.items():
+        slots[name] = {"raw": slot.get('value'), "matches": [], "status": slot.get('confirmationStatus')}
+        # For custom slots, get our successful resolutions
+        for resolution in slot.get('resolutions', {}).get('resolutionsPerAuthority', []):
             if resolution['status']['code'] == 'ER_SUCCESS_MATCH':
-                ret[key] = resolution['values'][0]
-                break
+                for match in resolution['values']:
+                    slots[name]['matches'].append({'value': match['value'].get('name'), 'id': match['value'].get('id')})
+    return slots
 
-    return ret
+
+def get_slot(slot_name):
+    slots = get_slots()
+    matches = slots.get(slot_name, {}).get('matches', [])
+    return {
+        'raw': slots.get(slot_name, {}).get('raw', None),
+        'value': matches[0]['value'] if len(matches) else None,
+        'id': matches[0].get('id') if len(matches) else None
+    }
+
+
+def fill_slot(slot_name, slot_value):
+    request.intent.slots[slot_name]['value'] = slot_value
+    return request
 
 
 @ask.intent('RandomFactIntent')
@@ -29,54 +57,90 @@ def get_random_fact():
 
 
 @ask.intent('MapIntent')
-def get_map_fact(x):
-    slots = get_slots()
+def get_map_fact():
+    slot = get_slot('map')
 
-    if request.get('dialogState', '') != 'COMPLETED':
-        return delegate()
+    if not slot['id']:
+        if not slot['raw']:
+            return elicit_slot('map', 'What\'s the map name?')
+        return elicit_slot('map', 'Map {} not found, Please try again.'.format(slot['raw']))
 
-    map = slots['map']
-    map_id = map['value']['id']
+    map_id = slot['id']
 
     if map_id not in map_facts:
-        return statement("No facts available for {}, map unknown".format(map['value']['name']))
+        return elicit_slot('map', 'No map entry for {} yet, please try another map'.format(slot['value']))
 
     facts = map_facts[map_id]
+    if not len(facts) or facts == '':
+        return elicit_slot('map', 'No facts available for {} yet, please try another map'.format(slot['value']))
 
-    if not len(facts):
-        return statement("No facts available for {}".format(map['value']['name']))
+    if not intent_confirmed():
+        return confirm_intent('Okay, so you would like a fact on {}'.format(slot['value']))
 
-    import ipdb
-    ipdb.set_trace()
     fact = random.choice(facts)
     return statement(fact)
 
 
 @ask.intent('PerkLocationIntent')
 def get_map_perk_location():
-    slots = get_slots()
+    map = get_slot('map')
+    if not map['id']:
+        if not map['raw']:
+            return elicit_slot('map', 'What\'s the map name?')
+        return elicit_slot('map', 'Map {} not found, Please try again.'.format(map['raw']))
 
-    if request.get('dialogState', '') != 'COMPLETED':
-        return delegate()
+    perk = get_slot('perk')
+    if not perk['id']:
+        if not perk['raw']:
+            return elicit_slot('perk', 'What\'s the perk name?')
+        return elicit_slot('perk', 'Perk {} not found, Please try again.'.format(perk['raw']))
 
-
-    map = slots['map']
-    map_id = map['value']['id']
-
+    map_id = map['id']
     if map_id == 'nacht':
         return statement('Nacht Der Untoten does not have any perks.')
+    if map_id not in map_perk_locations:
+        return elicit_slot('map', 'No map entries for {} yet, please try another map'.format(map['value']))
 
-    if map_id not in map_information:
-        return statement("Sorry, I could not find the perk location on {}, map unknown".format(map['value']['name']))
+    perk_id = perk['id']
+    if perk_id not in map_perk_locations[map_id]:
+        return statement("Sorry, {} is not available in {} ".format(perk['value'], map['value']))
 
-    perk = slots['perk']
-    perk_id = perk['value']['id']
-    if perk_id not in map_information[map_id]:
-        return statement("Sorry, this {} is not available in {} ".format(perk['value']['name'], map['value']['name']))
+    map_name = map['value']
+    perk_name = perk['value']
 
-    perk_location = map_information[map_id][perk_id]
+    if not intent_confirmed():
+        return confirm_intent('You want me to find the location of {} on {}'.format(perk_name, map_name))
 
-    return statement(perk_location)
+    perk_location = map_perk_locations[map_id][perk_id]
+    return statement('On {}, {} {}'.format(map_name, perk_name, perk_location))
+
+
+@ask.intent('GobbleGumIntent')
+def get_gobblegum_data():
+    slot = get_slot('gobblegum')
+
+    if not slot['id']:
+        if not slot['raw']:
+            return elicit_slot('gobblegum', 'What\'s the gobble gum name?')
+        return elicit_slot('gobblegum', 'Gobble Gum {} not found, Please try again.'.format(slot['raw']))
+
+    gobblegum = slot['value']
+    gobblegum_desc = gobblegum_data[slot['id']]['description']
+
+    monty_statement = render_template('gobblegum', gobblegum=gobblegum, gobblegum_desc=gobblegum_desc)
+    return statement(monty_statement).standard_card(
+        title="Gobblegum",
+        text=monty_statement,
+        small_image_url='https://vignette.wikia.nocookie.net/callofduty/images/8/8a/Arms_Grace_GobbleGum_BO3.png/revision/latest/scale-to-width-down/185?cb=20170526110940')
+
+
+@ask.intent('AMAZON.StopIntent')
+def stop():
+    return statement('OK no problem')
+
+
+def intent_confirmed():
+    return request.intent.confirmationStatus == 'CONFIRMED'
 
 
 if __name__ == '__main__':
