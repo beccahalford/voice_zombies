@@ -289,7 +289,8 @@ gobblegum_data = {
     'always_done_swiftly': {
         'description': 'Walk faster when aiming, and Raise and lower your weapon to aim more quickly.'
                        'Activates Immediately, Lasts 3 Rounds',
-        'type': 'classic'
+        'type': 'classic',
+        'url': 'https://vignette.wikia.nocookie.net/callofduty/images/3/31/Always_Done_Swiftly_GobbleGum_BO3.png/revision/latest/scale-to-width-down/185?cb=20170526110925'
     },
     'arms_grace': {
         'description': 'Respawn with the guns the player had when they bled out. '
