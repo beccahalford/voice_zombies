@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from flask_ask import Ask, statement, request, delegate, question, session, confirm_slot, elicit_slot, confirm_intent
 import random
 
@@ -126,12 +126,16 @@ def get_gobblegum_data():
 
     gobblegum = slot['value']
     gobblegum_desc = gobblegum_data[slot['id']]['description']
+    gobblegum_url = url_for('static', filename='gobblegum/'+slot['id']+'.png', _external=True)
+
+    gobblegum_url = gobblegum_url.replace('http', 'https')
 
     monty_statement = render_template('gobblegum', gobblegum=gobblegum, gobblegum_desc=gobblegum_desc)
     return statement(monty_statement).standard_card(
         title="Gobblegum",
         text=monty_statement,
-        small_image_url='https://vignette.wikia.nocookie.net/callofduty/images/8/8a/Arms_Grace_GobbleGum_BO3.png/revision/latest/scale-to-width-down/185?cb=20170526110940')
+        small_image_url=gobblegum_url
+    )
 
 
 @ask.intent('AMAZON.StopIntent')
