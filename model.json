@@ -1,0 +1,495 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "doctor monty",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "MapIntent",
+          "slots": [
+            {
+              "name": "map",
+              "type": "MAP",
+              "samples": [
+                "the map is {map}",
+                "{map}"
+              ]
+            }
+          ],
+          "samples": [
+            "for information on a map",
+            "for info on a map",
+            "about {map}",
+            "Give me a fact on {map}"
+          ]
+        },
+        {
+          "name": "RandomFactIntent",
+          "slots": [],
+          "samples": [
+            "Give me a random fact"
+          ]
+        },
+        {
+          "name": "PerkLocationIntent",
+          "slots": [
+            {
+              "name": "perk",
+              "type": "PERK",
+              "samples": [
+                "{perk}"
+              ]
+            },
+            {
+              "name": "map",
+              "type": "MAP",
+              "samples": [
+                "{map}"
+              ]
+            }
+          ],
+          "samples": [
+            "on {map} find {perk}",
+            "find me a location",
+            "find me a location for {perk}",
+            "find me a perk on this map",
+            "for the location of {perk} in {map}",
+            "for the location of {perk}",
+            "find {perk}",
+            "find me a perk on {map}",
+            "find a perk",
+            "on {map} where can i find {perk}",
+            "on {map} where can i find",
+            "where can i find {perk} on {map}",
+            "where can i find {perk}",
+            "find {perk} on {map}",
+            "where is {perk}",
+            "where is {perk} on {map}",
+            "on {map} where is {perk}",
+            "where {perk} is on {map}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "name": "MAP",
+          "values": [
+            {
+              "id": "shadowed_throne",
+              "name": {
+                "value": "The Shadowed Throne"
+              }
+            },
+            {
+              "id": "darkest_shore",
+              "name": {
+                "value": "The Darkest Shore"
+              }
+            },
+            {
+              "id": "haus",
+              "name": {
+                "value": "Gröesten Haus"
+              }
+            },
+            {
+              "id": "final_reich",
+              "name": {
+                "value": "The Final Reich"
+              }
+            },
+            {
+              "id": "prologue",
+              "name": {
+                "value": "Prologue"
+              }
+            },
+            {
+              "id": "beast",
+              "name": {
+                "value": "The Beast From Beyond"
+              }
+            },
+            {
+              "id": "radioactive",
+              "name": {
+                "value": "Attack of the Radioactive Thing"
+              }
+            },
+            {
+              "id": "shaolin",
+              "name": {
+                "value": "Shaolin Shuffle"
+              }
+            },
+            {
+              "id": "redwoods",
+              "name": {
+                "value": "Rave in the Redwoods"
+              }
+            },
+            {
+              "id": "spaceland",
+              "name": {
+                "value": "Zombies in Spaceland"
+              }
+            },
+            {
+              "id": "revelations",
+              "name": {
+                "value": "Revelations"
+              }
+            },
+            {
+              "id": "gorod_krovi",
+              "name": {
+                "value": "Gorod Krovi"
+              }
+            },
+            {
+              "id": "the_giant",
+              "name": {
+                "value": "The Giant"
+              }
+            },
+            {
+              "id": "zetsubou",
+              "name": {
+                "value": "Zetsubou No Shima"
+              }
+            },
+            {
+              "id": "der_eisendrache",
+              "name": {
+                "value": "Der Eisendrache"
+              }
+            },
+            {
+              "id": "shadows",
+              "name": {
+                "value": "Shadows of Evil"
+              }
+            },
+            {
+              "id": "origins",
+              "name": {
+                "value": "Origins"
+              }
+            },
+            {
+              "id": "buried",
+              "name": {
+                "value": "Buried"
+              }
+            },
+            {
+              "id": "mob",
+              "name": {
+                "value": "Mob of the Dead"
+              }
+            },
+            {
+              "id": "die_rise",
+              "name": {
+                "value": "Die Rise"
+              }
+            },
+            {
+              "id": "nuketown",
+              "name": {
+                "value": "Nuketown"
+              }
+            },
+            {
+              "id": "town",
+              "name": {
+                "value": "Town"
+              }
+            },
+            {
+              "id": "moon",
+              "name": {
+                "value": "Moon"
+              }
+            },
+            {
+              "id": "shangri_la",
+              "name": {
+                "value": "Shangri-La"
+              }
+            },
+            {
+              "id": "call_of_the_dead",
+              "name": {
+                "value": "Call of the Dead"
+              }
+            },
+            {
+              "id": "ascension",
+              "name": {
+                "value": "Ascension"
+              }
+            },
+            {
+              "id": "five",
+              "name": {
+                "value": "Five"
+              }
+            },
+            {
+              "id": "kino",
+              "name": {
+                "value": "Kino der Toten",
+                "synonyms": [
+                  "Keeno",
+                  "Kino"
+                ]
+              }
+            },
+            {
+              "id": "der_riese",
+              "name": {
+                "value": "Der Riese",
+                "synonyms": [
+                  "Der Rieser",
+                  "Der Reese"
+                ]
+              }
+            },
+            {
+              "id": "shi_no_numa",
+              "name": {
+                "value": "Shi No Numa"
+              }
+            },
+            {
+              "id": "verruckt",
+              "name": {
+                "value": "Verrückt"
+              }
+            },
+            {
+              "id": "nacht",
+              "name": {
+                "value": "Nacht der Untoten",
+                "synonyms": [
+                  "Nacht"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "PERK",
+          "values": [
+            {
+              "id": "widows_wine",
+              "name": {
+                "value": "Widow's Wine",
+                "synonyms": [
+                  "Widows"
+                ]
+              }
+            },
+            {
+              "id": "vulture_aid",
+              "name": {
+                "value": "Vulture Aid Elixir",
+                "synonyms": [
+                  "scavenger",
+                  "Vulture Aid"
+                ]
+              }
+            },
+            {
+              "id": "electric_cherry",
+              "name": {
+                "value": "Electric Cherry"
+              }
+            },
+            {
+              "id": "whos_who",
+              "name": {
+                "value": "Who's Who"
+              }
+            },
+            {
+              "id": "tombstone",
+              "name": {
+                "value": "Tombstone Soda",
+                "synonyms": [
+                  "tomb stone",
+                  "Tombstone"
+                ]
+              }
+            },
+            {
+              "id": "mule_kick",
+              "name": {
+                "value": "Mule Kick"
+              }
+            },
+            {
+              "id": "deadshot",
+              "name": {
+                "value": "Deadshot Daiquiri",
+                "synonyms": [
+                  "Deadshot"
+                ]
+              }
+            },
+            {
+              "id": "stamin_up",
+              "name": {
+                "value": "Stamin-Up"
+              }
+            },
+            {
+              "id": "phd_flopper",
+              "name": {
+                "value": "PhD Flopper",
+                "synonyms": [
+                  "PhD"
+                ]
+              }
+            },
+            {
+              "id": "double_tap",
+              "name": {
+                "value": "Double Tap Root Beer"
+              }
+            },
+            {
+              "id": "speed_cola",
+              "name": {
+                "value": "Speed Cola",
+                "synonyms": [
+                  "Speed"
+                ]
+              }
+            },
+            {
+              "id": "quick_revive",
+              "name": {
+                "value": "Quick Revive"
+              }
+            },
+            {
+              "id": "juggernog",
+              "name": {
+                "value": "Juggernog",
+                "synonyms": [
+                  "Juggernaut",
+                  "Jug",
+                  "Jugg"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "MapIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "map",
+              "type": "MAP",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.401607133340.1431354291930"
+              }
+            }
+          ]
+        },
+        {
+          "name": "PerkLocationIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "perk",
+              "type": "PERK",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1340554841921.749460730647"
+              }
+            },
+            {
+              "name": "map",
+              "type": "MAP",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1340554841921.822881014784"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.401607133340.1431354291930",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "please repeat the map name"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1340554841921.749460730647",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "what perk location do you want"
+          },
+          {
+            "type": "PlainText",
+            "value": "what perk are you looking for"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.1340554841921.822881014784",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "which map"
+          },
+          {
+            "type": "PlainText",
+            "value": "which map did you want the location for"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Slot.1012517451797.713754249847",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "is {perk} what you are looking for?"
+          }
+        ]
+      }
+    ]
+  }
+}
