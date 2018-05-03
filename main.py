@@ -3,49 +3,10 @@ from flask_ask import Ask, statement, request, delegate, question, session, conf
 import random
 
 from facts import random_facts, map_facts, map_perk_locations, gobblegum_data
+from utils import get_slot
 
 app = Flask(__name__)
 ask = Ask(app, '/')
-
-
-def get_slots():
-    """
-    Get all of our slots out, e.g
-        {
-            "slot_name": {
-                "raw": "Raw Value",
-                "matches": [
-                    {"value": "value", "id": "slot_id"}
-                ],
-                "status": "CONFIRMED"
-            }
-        }
-    """
-    slots = {}
-    # Dig through each slot
-    for name, slot in request.intent.slots.items():
-        slots[name] = {"raw": slot.get('value'), "matches": [], "status": slot.get('confirmationStatus')}
-        # For custom slots, get our successful resolutions
-        for resolution in slot.get('resolutions', {}).get('resolutionsPerAuthority', []):
-            if resolution['status']['code'] == 'ER_SUCCESS_MATCH':
-                for match in resolution['values']:
-                    slots[name]['matches'].append({'value': match['value'].get('name'), 'id': match['value'].get('id')})
-    return slots
-
-
-def get_slot(slot_name):
-    slots = get_slots()
-    matches = slots.get(slot_name, {}).get('matches', [])
-    return {
-        'raw': slots.get(slot_name, {}).get('raw', None),
-        'value': matches[0]['value'] if len(matches) else None,
-        'id': matches[0].get('id') if len(matches) else None
-    }
-
-
-def fill_slot(slot_name, slot_value):
-    request.intent.slots[slot_name]['value'] = slot_value
-    return request
 
 
 @ask.intent('RandomFactIntent')
@@ -53,7 +14,7 @@ def get_random_fact():
 
     fact = random.choice(random_facts)
     speech_text = fact
-    return statement(speech_text).simple_card("Zombies Fact", speech_text)
+    return statement(speech_text).simple_card("Random Zombies Fact", speech_text)
 
 
 @ask.intent('MapIntent')
@@ -63,19 +24,20 @@ def get_map_fact():
     if not slot['id']:
         if not slot['raw']:
             return elicit_slot('map', 'What\'s the map name?')
-        return elicit_slot('map', 'Map {} not found, Please try again.'.format(slot['raw']))
+        return elicit_slot('map', render_template('map_unknown', user_value=slot['raw']))
 
     map_id = slot['id']
+    map_name = slot['value']
 
     if map_id not in map_facts:
-        return elicit_slot('map', 'No map entry for {} yet, please try another map'.format(slot['value']))
+        return elicit_slot('map', render_template('no_map_entry', map=map_name))
 
     facts = map_facts[map_id]
     if not len(facts) or facts == '':
-        return elicit_slot('map', 'No facts available for {} yet, please try another map'.format(slot['value']))
+        return elicit_slot('map', render_template('no_map_entry', map=map_name))
 
     if not intent_confirmed():
-        return confirm_intent('Okay, so you would like a fact on {}'.format(slot['value']))
+        return confirm_intent(render_template('map_confirmation', map=map_name))
 
     fact = random.choice(facts)
     return statement(fact)
@@ -87,32 +49,36 @@ def get_map_perk_location():
     if not map['id']:
         if not map['raw']:
             return elicit_slot('map', 'What\'s the map name?')
-        return elicit_slot('map', 'Map {} not found, Please try again.'.format(map['raw']))
+        return elicit_slot('map', render_template('map_unknown', user_value=map['raw']))
 
     perk = get_slot('perk')
     if not perk['id']:
         if not perk['raw']:
             return elicit_slot('perk', 'What\'s the perk name?')
-        return elicit_slot('perk', 'Perk {} not found, Please try again.'.format(perk['raw']))
+        return elicit_slot('perk', render_template('map_unknown', user_value=perk['raw']))
 
     map_id = map['id']
-    if map_id == 'nacht':
-        return statement('Nacht Der Untoten does not have any perks.')
-    if map_id not in map_perk_locations:
-        return elicit_slot('map', 'No map entries for {} yet, please try another map'.format(map['value']))
-
-    perk_id = perk['id']
-    if perk_id not in map_perk_locations[map_id]:
-        return statement("Sorry, {} is not available in {} ".format(perk['value'], map['value']))
-
     map_name = map['value']
     perk_name = perk['value']
 
+    if map_id == 'nacht':
+        return statement('Nacht Der Untoten does not have any perks.')
+    if map_id not in map_perk_locations:
+        return elicit_slot('map', render_template('no_perk_location', map=map_name))
+
+    perk_id = perk['id']
+
+    if perk_id not in map_perk_locations[map_id]:
+        return statement(render_template('perk_location_confirmation', map=map_name, perk=perk_name))
+
     if not intent_confirmed():
-        return confirm_intent('You want me to find the location of {} on {}'.format(perk_name, map_name))
+        return confirm_intent(render_template('perk_location_confirmation', map=map_name, perk=perk_name))
 
     perk_location = map_perk_locations[map_id][perk_id]
-    return statement('On {}, {} {}'.format(map_name, perk_name, perk_location))
+    return statement(render_template('perk_location',
+                                     map=map_name,
+                                     perk=perk_name,
+                                     perk_location=perk_location))
 
 
 @ask.intent('GobbleGumIntent')
@@ -122,7 +88,7 @@ def get_gobblegum_data():
     if not slot['id']:
         if not slot['raw']:
             return elicit_slot('gobblegum', 'What\'s the gobble gum name?')
-        return elicit_slot('gobblegum', 'Gobble Gum {} not found, Please try again.'.format(slot['raw']))
+        return elicit_slot('gobblegum', render_template('gobblegum_unknown', user_value=slot['raw']))
 
     gobblegum = slot['value']
     gobblegum_desc = gobblegum_data[slot['id']]['description']
@@ -140,7 +106,11 @@ def get_gobblegum_data():
 
 @ask.intent('AMAZON.StopIntent')
 def stop():
-    return statement('OK no problem')
+    stop_message=random.choice([
+        'OK no problem', 'Goodbye', 'Bye for now', 'Speak to you later', 'Until next time', 'bye', 'bye bye',
+    ])
+
+    return statement(stop_message)
 
 
 def intent_confirmed():

@@ -1,4 +1,34 @@
 ---
+map_unknown: |
+  Map {{user_value}} not found, Please try again.
+
+no_map_entry: |
+  No map entry for {{map}} yet, please try another map.
+
+no_map_facts: |
+  No facts available for {{map}} yet, please try another map
+
+map_confirmation: |
+  Okay, so you would like a fact on {{map}}?
+
+perk_unknown: |
+  Perk {{user_value}} not found, Please try again.
+
+no_perk_location: |
+  No perk entries for {{map}} yet, please try another map
+
+perk_unavailble: |
+  Sorry, {{perk}} is not available in {{map}}
+
+perk_location_confirmation: |
+  You want me to find the location of {{perk}} on {{map}}?
+
+perk_location: |
+  On {{map}}, {{perk}} {{perk_location}}
+
+gobblegum_unknown: |
+  Gobblegum {{user_value}} not found, Please try again.
 
 gobblegum: |
   {{gobblegum}}, {{gobblegum_desc}}
+
