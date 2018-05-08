@@ -1,9 +1,10 @@
-from flask import Flask, render_template, url_for
-from flask_ask import Ask, statement, request, delegate, question, session, confirm_slot, elicit_slot, confirm_intent
 import random
 
-from facts import random_facts, map_facts, map_perk_locations, gobblegum_data
-from utils import get_slot
+from flask import Flask, render_template, url_for
+from flask_ask import Ask, statement, request, elicit_slot, confirm_intent
+
+from zombies.facts import random_facts, map_facts, map_perk_locations, gobblegum_data
+from zombies.utils import get_slot
 
 app = Flask(__name__)
 ask = Ask(app, '/')
