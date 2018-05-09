@@ -79,12 +79,34 @@
             "on {map} where is {perk}",
             "where {perk} is on {map}"
           ]
+        },
+        {
+          "name": "GobbleGumIntent",
+          "slots": [
+            {
+              "name": "gobblegum",
+              "type": "GOBBLEGUM",
+              "samples": [
+                "{gobblegum}"
+              ]
+            }
+          ],
+          "samples": [
+            "what {gobblegum} does",
+            "What does {gobblegum} do"
+          ]
         }
       ],
       "types": [
         {
           "name": "MAP",
           "values": [
+            {
+              "id": "town",
+              "name": {
+                "value": "Town"
+              }
+            },
             {
               "id": "shadowed_throne",
               "name": {
@@ -212,9 +234,12 @@
               }
             },
             {
-              "id": "town",
+              "id": "tranzit",
               "name": {
-                "value": "Town"
+                "value": "TranZit",
+                "synonyms": [
+                  "Green Run"
+                ]
               }
             },
             {
@@ -276,7 +301,10 @@
             {
               "id": "verruckt",
               "name": {
-                "value": "Verrückt"
+                "value": "Verrückt",
+                "synonyms": [
+                  "verruckt"
+                ]
               }
             },
             {
@@ -397,6 +425,398 @@
               }
             }
           ]
+        },
+        {
+          "name": "GOBBLEGUM",
+          "values": [
+            {
+              "id": "reign_drops",
+              "name": {
+                "value": "Reign Drops",
+                "synonyms": [
+                  "Rain Drops"
+                ]
+              }
+            },
+            {
+              "id": "power_vacuum",
+              "name": {
+                "value": "Power Vacuum"
+              }
+            },
+            {
+              "id": "self_medication",
+              "name": {
+                "value": "Self Medication",
+                "synonyms": [
+                  "Self Med"
+                ]
+              }
+            },
+            {
+              "id": "round_robbin",
+              "name": {
+                "value": "Round Robbin'"
+              }
+            },
+            {
+              "id": "profit_sharing",
+              "name": {
+                "value": "Profit Sharing"
+              }
+            },
+            {
+              "id": "near_death",
+              "name": {
+                "value": "Near Death Experience"
+              }
+            },
+            {
+              "id": "shopping_free",
+              "name": {
+                "value": "Shopping Free"
+              }
+            },
+            {
+              "id": "secret_shopper",
+              "name": {
+                "value": "Secret Shopper"
+              }
+            },
+            {
+              "id": "head_drama",
+              "name": {
+                "value": "Head Drama"
+              }
+            },
+            {
+              "id": "perkaholic",
+              "name": {
+                "value": "Perkaholic"
+              }
+            },
+            {
+              "id": "killing_time",
+              "name": {
+                "value": "Killing Time"
+              }
+            },
+            {
+              "id": "soda_fountain",
+              "name": {
+                "value": "Soda Fountain"
+              }
+            },
+            {
+              "id": "extra_credit",
+              "name": {
+                "value": "Extra Credit"
+              }
+            },
+            {
+              "id": "bullet_boost",
+              "name": {
+                "value": "Bullet Boost"
+              }
+            },
+            {
+              "id": "crate_power",
+              "name": {
+                "value": "Crate Power"
+              }
+            },
+            {
+              "id": "temporal_gift",
+              "name": {
+                "value": "Temporal Gift"
+              }
+            },
+            {
+              "id": "fear_headlights",
+              "name": {
+                "value": "Fear in Headlights"
+              }
+            },
+            {
+              "id": "undead_man_walking",
+              "name": {
+                "value": "Undead Man Walking"
+              }
+            },
+            {
+              "id": "wall_power",
+              "name": {
+                "value": "Wall Power"
+              }
+            },
+            {
+              "id": "on_the_house",
+              "name": {
+                "value": "On The House"
+              }
+            },
+            {
+              "id": "kill_joy",
+              "name": {
+                "value": "Kill Joy"
+              }
+            },
+            {
+              "id": "cache_back",
+              "name": {
+                "value": "Cache Back"
+              }
+            },
+            {
+              "id": "board_death",
+              "name": {
+                "value": "Board to Death"
+              }
+            },
+            {
+              "id": "idle_eyes",
+              "name": {
+                "value": "Idle Eyes"
+              }
+            },
+            {
+              "id": "flavor_hexed",
+              "name": {
+                "value": "Flavor Hexed",
+                "synonyms": [
+                  "Flavour Hexed"
+                ]
+              }
+            },
+            {
+              "id": "board_games",
+              "name": {
+                "value": "Board Games"
+              }
+            },
+            {
+              "id": "mind_blown",
+              "name": {
+                "value": "Mind Blown"
+              }
+            },
+            {
+              "id": "slaughter_slide",
+              "name": {
+                "value": "Slaughter Slide"
+              }
+            },
+            {
+              "id": "disorderly_combat",
+              "name": {
+                "value": "Disorderly Combat"
+              }
+            },
+            {
+              "id": "unbearable",
+              "name": {
+                "value": "Unbearable"
+              }
+            },
+            {
+              "id": "crawl_space",
+              "name": {
+                "value": "Crawl Space"
+              }
+            },
+            {
+              "id": "fatal_contraption",
+              "name": {
+                "value": "Fatal Contraption"
+              }
+            },
+            {
+              "id": "keeping_score",
+              "name": {
+                "value": "Who's Keeping Score"
+              }
+            },
+            {
+              "id": "unquenchable",
+              "name": {
+                "value": "Unquenchable"
+              }
+            },
+            {
+              "id": "respin_cycle",
+              "name": {
+                "value": "Respin Cycle"
+              }
+            },
+            {
+              "id": "pop_shocks",
+              "name": {
+                "value": "Pop Shocks"
+              }
+            },
+            {
+              "id": "phoenix_up",
+              "name": {
+                "value": "Phoenix Up"
+              }
+            },
+            {
+              "id": "licensed_contractor",
+              "name": {
+                "value": "Licensed Contractor"
+              }
+            },
+            {
+              "id": "immolation",
+              "name": {
+                "value": "Immolation Liquidation"
+              }
+            },
+            {
+              "id": "feeling_lucky",
+              "name": {
+                "value": "I'm Feeling Lucky"
+              }
+            },
+            {
+              "id": "ephemeral_enhancement",
+              "name": {
+                "value": "Ephemeral Enhancement"
+              }
+            },
+            {
+              "id": "nuclear_winter",
+              "name": {
+                "value": "Dead of Nuclear Winter"
+              }
+            },
+            {
+              "id": "burned_out",
+              "name": {
+                "value": "Burned Out"
+              }
+            },
+            {
+              "id": "aftertaste",
+              "name": {
+                "value": "Aftertaste"
+              }
+            },
+            {
+              "id": "tone_death",
+              "name": {
+                "value": "Tone Death"
+              }
+            },
+            {
+              "id": "eye_candy",
+              "name": {
+                "value": "Eye Candy"
+              }
+            },
+            {
+              "id": "newtonian",
+              "name": {
+                "value": "Newtonian Negation"
+              }
+            },
+            {
+              "id": "projectile",
+              "name": {
+                "value": "Projectile Vomiting"
+              }
+            },
+            {
+              "id": "alchemical",
+              "name": {
+                "value": "Alchemical Antithesis"
+              }
+            },
+            {
+              "id": "now_you_see",
+              "name": {
+                "value": "Now You See Me"
+              }
+            },
+            {
+              "id": "lucky_crit",
+              "name": {
+                "value": "Lucky Crit"
+              }
+            },
+            {
+              "id": "arsenal_accelerator",
+              "name": {
+                "value": "Arsenal Accelerator"
+              }
+            },
+            {
+              "id": "firing_cylinders",
+              "name": {
+                "value": "Firing on All Cylinders"
+              }
+            },
+            {
+              "id": "armamental",
+              "name": {
+                "value": "Armamental Accomplishment"
+              }
+            },
+            {
+              "id": "danger_closest",
+              "name": {
+                "value": "Danger Closest"
+              }
+            },
+            {
+              "id": "anywhere_but_here",
+              "name": {
+                "value": "Anywhere But Here!"
+              }
+            },
+            {
+              "id": "sword_flay",
+              "name": {
+                "value": "Sword Flay"
+              }
+            },
+            {
+              "id": "impatient",
+              "name": {
+                "value": "Impatient"
+              }
+            },
+            {
+              "id": "stock_option",
+              "name": {
+                "value": "Stock Option"
+              }
+            },
+            {
+              "id": "plain_sight",
+              "name": {
+                "value": "In Plain Sight"
+              }
+            },
+            {
+              "id": "coagulant",
+              "name": {
+                "value": "Coagulant"
+              }
+            },
+            {
+              "id": "arms_grace",
+              "name": {
+                "value": "Arms Grace"
+              }
+            },
+            {
+              "id": "always_done_swiftly",
+              "name": {
+                "value": "Always Done Swiftly"
+              }
+            }
+          ]
         }
       ]
     },
@@ -404,8 +824,10 @@
       "intents": [
         {
           "name": "MapIntent",
-          "confirmationRequired": false,
-          "prompts": {},
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.498964078461"
+          },
           "slots": [
             {
               "name": "map",
@@ -420,8 +842,10 @@
         },
         {
           "name": "PerkLocationIntent",
-          "confirmationRequired": false,
-          "prompts": {},
+          "confirmationRequired": true,
+          "prompts": {
+            "confirmation": "Confirm.Intent.205406965103"
+          },
           "slots": [
             {
               "name": "perk",
@@ -439,6 +863,22 @@
               "elicitationRequired": true,
               "prompts": {
                 "elicitation": "Elicit.Slot.1340554841921.822881014784"
+              }
+            }
+          ]
+        },
+        {
+          "name": "GobbleGumIntent",
+          "confirmationRequired": false,
+          "prompts": {},
+          "slots": [
+            {
+              "name": "gobblegum",
+              "type": "GOBBLEGUM",
+              "confirmationRequired": false,
+              "elicitationRequired": true,
+              "prompts": {
+                "elicitation": "Elicit.Slot.508680072753.599366571915"
               }
             }
           ]
@@ -487,6 +927,37 @@
           {
             "type": "PlainText",
             "value": "is {perk} what you are looking for?"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.498964078461",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Okay, so you would like a fact on {map}"
+          },
+          {
+            "type": "PlainText",
+            "value": "what map"
+          }
+        ]
+      },
+      {
+        "id": "Elicit.Slot.508680072753.599366571915",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "please repeat gobblegum name"
+          }
+        ]
+      },
+      {
+        "id": "Confirm.Intent.205406965103",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "You want me to find the location of {perk} on {map}"
           }
         ]
       }
