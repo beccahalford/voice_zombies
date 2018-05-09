@@ -1,0 +1,52 @@
+{
+	"version": "1.0",
+	"session": {
+		"new": true,
+		"sessionId": "<sessionId>",
+		"application": {
+			"applicationId": "amzn1.ask.skill.902c0965-8099-496a-82af-b557c826f067"
+		},
+		"user": {
+			"userId": "<userid>",
+			"accessToken": "<access_token>:<expiry>"
+		},
+		"attributes": {},
+		"dialogState": null
+	},
+	"context": {
+		"AudioPlayer": {
+			"playerActivity": "IDLE"
+		},
+		"Display": {
+			"token": ""
+		},
+		"System": {
+			"application": {
+				"applicationId": "amzn1.ask.skill.902c0965-8099-496a-82af-b557c826f067"
+			},
+			"user": {
+				"userId": "<userid>",
+				"accessToken": "<access_token>:<expiry>"
+			},
+			"device": {
+				"deviceId": "<deviceId>",
+				"supportedInterfaces": {
+					"AudioPlayer": {},
+					"Display": {
+						"templateVersion": "1.0",
+						"markupVersion": "1.0"
+					}
+				}
+			},
+			"apiEndpoint": "https://api.eu.amazonalexa.com",
+			"apiAccessToken": "<apiAccessToken>"
+		}
+	},
+	"request": {
+		"type": "IntentRequest",
+		"requestId": "amzn1.echo-api.request.c221adb5-714c-4e7d-8bc4-6e5b65fb867f",
+		"timestamp": "2018-02-08T14:47:03Z",
+		"locale": "en-GB",
+		"intent": null
+	}
+}

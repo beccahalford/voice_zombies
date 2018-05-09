@@ -91,14 +91,16 @@ map_perk_locations = {
     },
     'five': {
         'quick_revive': 'can be found in the starting room in the corridor.',
-        'juggernog':    '',
+        'juggernog':    'is Downstairs in the war room, next to the door that leads to the Pack-a-Punch Machine room.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    ''
     },
     'ascension': {
         'quick_revive': 'is in the starting room, on Centrifuge Floor 1.',
-        'juggernog':    '',
+        'juggernog':    'Down the second staircase after buying the door that leads to the MPL room. The entrance is '
+                        'right next to the PM63. Can be obtained from a Random Perk Bottle by finishing a Space Monkey '
+                        'round without having them attack the Perk Machines.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -109,7 +111,9 @@ map_perk_locations = {
     },
     'call_of_the_dead': {
         'quick_revive': 'is found in the starting area, connected to the courtyard of the lighthouse.',
-        'juggernog':    '',
+        'juggernog':    'is located In the hull of the ship, nearby one of the Pack-a-Punch\'s many spawn locations. '
+                        'Can be obtained from a Random Perk Bottle by killing Romero whether or not the player has '
+                        'finished the easter egg.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -119,7 +123,9 @@ map_perk_locations = {
     },
     'shangri_la': {
         'quick_revive': 'can be found in the starting area, along the middle wall.',
-        'juggernog':    '',
+        'juggernog':    'is found Outside the temple next to a pillar by the MPL or on the bridge on the side of the '
+                        'mud pit (Changes the position with Speed Cola). Can be obtained from a Random Perk Bottle by '
+                        'killing a Zombie Monkey as it cycles the power-up.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -130,7 +136,9 @@ map_perk_locations = {
     },
     'moon': {
         'quick_revive': 'is located in the Receiving Area on the Moon.',
-        'juggernog':    '',
+        'juggernog':    'may be found In Area 51 by the teleporter. Changes places with Speed Cola every time the '
+                        'player returns to Area 51. It can also be obtained from a Random Perk Bottle by either '
+                        'jumping multiple times on the bounce pads or spawning it with a QED. ',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -141,7 +149,7 @@ map_perk_locations = {
     },
     'tranzit': {
         'quick_revive': 'can be found inside the starting area in the bus depot.',
-        'juggernog':    '',
+        'juggernog':    'is found On the second floor near a corner in the building across from the bank in the town.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -150,7 +158,7 @@ map_perk_locations = {
     },
     'town': {
         'quick_revive': 'can be found on the 2nd floor of the bar in the corner near the Mystery Box spawn.',
-        'juggernog':    '',
+        'juggernog':    'is found On the second floor near a corner in the building across from the bank in the town.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -160,14 +168,16 @@ map_perk_locations = {
     'nuketown': {
         'quick_revive': 'may be found in any perk spawn in the first room when playing solo. Spawns as an air drop '
                         'anywhere on the map during co-op mode.',
-        'juggernog':    '',
+        'juggernog':    'Will spawn randomly with all other perks.',
         'speed_cola':   '',
         'double_tap':   ''
     },
     'die_rise': {
         'quick_revive': 'will always spawn in the elevator shaft closest to the purchasable door in the starting area, '
                         'near the M14 and Trample Steam work table.',
-        'juggernog':    '',
+        'juggernog':    'Spawns randomly in one of the four elevator shafts in the building with the power switch. It '
+                        'trades these positions between games with Double Tap Root Beer, Mule Kick and the Pack-a-Punch'
+                        ' Machine.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -176,7 +186,7 @@ map_perk_locations = {
     },
     'mob': {
         'quick_revive': 'is not available in mob of the dead, use afterlife mode instead',
-        'juggernog':    '',
+        'juggernog':    'is Down near the Cerberus spawn and Gondola on the docks.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -187,7 +197,8 @@ map_perk_locations = {
     'buried': {
         'quick_revive': 'can be found on the left side of the very first room upon descending from the surface into '
                         'the underground town.',
-        'juggernog':    '',
+        'juggernog':    'Behind some debris right next to the Giant\'s cell in a small alley, which needs to be '
+                        'destroyed by him before players can access the machine.',
         'speed_cola':   '',
         'double_tap':   '',
         'mule_kick':    '',
@@ -252,7 +263,7 @@ map_perk_locations = {
         'electric_cherry': ''
     },
     'gorod_krovi': {
-        'quick_revive': '',
+        'quick_revive': 'will be found In Belinski Square, to the left of the first door.',
         'juggernog':    '',
         'speed_cola':   '',
         'double_tap':   '',
@@ -263,7 +274,7 @@ map_perk_locations = {
         'electric_cherry': ''
     },
     'revelations': {
-        'quick_revive': '',
+        'quick_revive': 'can be found In the starting room, directly in front of The House.',
         'juggernog':    '',
         'speed_cola':   '',
         'double_tap':   '',
