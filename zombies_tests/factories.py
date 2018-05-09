@@ -12,29 +12,6 @@ def get_intent(intent_name, confirmation='NONE'):
     }
     return intent
 
-# "slots": {
-#     "map": {
-#         "name": "map",
-#         "value": "der Reese",
-#         "resolutions": {
-#             "resolutionsPerAuthority": [
-#                 {
-#                     "authority": "amzn1.er-authority.echo-sdk.amzn1.ask.skill.4b1e2fd2-179f-43e8-9214-bdbc8b3177ab.MAP",
-#                     "status": {
-#                         "code": "ER_SUCCESS_MATCH"
-#                     },
-#                     "values": [
-#                         {
-#                             "value": {
-#                                 "name": "Der Riese",
-#                                 "id": "der_riese"
-#                             }
-#                         }
-#                     ]
-#                 }
-#             ]
-#         },
-
 
 def slot(name, value=None, slot_id=None, confirmed='NONE'):
     slot = {
@@ -73,5 +50,25 @@ def map_fact_intent():
             "map": slot("map", "Der Riese", "der_riese", confirmed='CONFIRMED'),
         }
     })
+    return intent
 
+
+def perk_location_intent():
+    intent = get_intent('PerkLocationIntent', 'CONFIRMED')
+    intent['request']['intent'].update({
+        "slots": {
+            "map": slot("map", "Der Riese", "der_riese", confirmed='CONFIRMED'),
+            "perk": slot("perk", "Jugg", "juggernog", confirmed='CONFIRMED'),
+        }
+    })
+    return intent
+
+
+def gobblegum_intent():
+    intent = get_intent('GobbleGumIntent')
+    intent['request']['intent'].update({
+        "slots": {
+            "gobblegum": slot("gobblegum", "Perkaholic", "perkaholic"),
+        }
+    })
     return intent
