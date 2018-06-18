@@ -12,12 +12,9 @@ random_facts = [
 ]
 
 map_facts = {
-    'nacht': [
-
-    ],
-    'verruckt': [
-
-    ],
+    'nacht': [],
+    'shi_no_numa': [],
+    'verruckt': [],
     'der_riese': [
         'Der Reese is a real location found in Poland that was used by Nazi scientists during the war'
     ],
@@ -67,7 +64,7 @@ map_perk_locations = {
         'juggernog': 'Randomly spawns in one of the huts',
         'speed_cola': 'Will spawn randomly in one of the four huts',
         'double_tap': 'Will randomly spawn in one of the four huts',
-        'mule_kick': 'is available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum (Black Ops 3 Only)',
+        'mule_kick': 'is available In the starting room, to the left of the Gewehr 43. Or via Der Wunderfizz machine, Perkaholic or On the House GobbleGum (Black Ops 3 Only)',
         'stamin-up': 'is available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum (Black Ops 3 Only)',
         'deadshot': 'is available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum (Black Ops 3 Only)',
         'widows_wine': 'is available via Der Wunderfizz machine, Perkaholic or On the House GobbleGum (Black Ops 3 Only)'
@@ -92,85 +89,107 @@ map_perk_locations = {
     'five': {
         'quick_revive': 'can be found in the starting room in the corridor.',
         'juggernog':    'is Downstairs in the war room, next to the door that leads to the Pack-a-Punch Machine room.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    ''
+        'speed_cola':   'is Next to the starting room, near the elevator.',
+        'double_tap':   'will be found In the War Room next to the first elevator.',
+        'mule_kick':    'located In the war room, across the Mystery Box location.'
     },
     'ascension': {
         'quick_revive': 'is in the starting room, on Centrifuge Floor 1.',
-        'juggernog':    'Down the second staircase after buying the door that leads to the MPL room. The entrance is '
-                        'right next to the PM63. Can be obtained from a Random Perk Bottle by finishing a Space Monkey '
-                        'round without having them attack the Perk Machines.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'Down the second staircase after buying the door that leads to the MPL/VMP(BO3) room. The '
+                        'entrance is right next to the PM63/Vesper(BO3). Can be obtained from a Random Perk Bottle by '
+                        'finishing a Space Monkey round without having them attack the Perk Machines.',
+        'speed_cola':   'Near the Lunar Lander closest to the rocket and the Pack-a-Punch Machine; located near the top'
+                        ' of the stairs where the M16/M8A7 and the Sickle are. Can also be obtained from a Random Perk '
+                        'Bottle by finishing a Space Monkey round without having a perk machine attacked.',
+        'double_tap':   'Available in black ops 3 only. Can only be obtained from the Random Perk Bottle, Der '
+                        'Wunderfizz machine or the Perkaholic or On the House GobbleGum.',
+        'mule_kick':    'Underneath the Speed Cola room, next to a barrier.',
+        'stamin-up':    'Located past the gates to the left of the upper spawn door. It is in the back of the alleyway '
+                        'past the door leading to the launch pad near the AK-74u and next to a spawn point of the '
+                        'Mystery Box on the left.',
         'deadshot':     '',
         'widows_wine':  '',
-        'phd_flopper':  ''
+        'phd_flopper':  'Black ops 1 only. In the room by Lunar Lander (closest to MP5K), with the grenades available '
+                        'to purchase off the nearby wall. Can also be obtained from a Random Perk Bottle by finishing '
+                        'a Space Monkey round without having any machines attacked.'
     },
     'call_of_the_dead': {
         'quick_revive': 'is found in the starting area, connected to the courtyard of the lighthouse.',
         'juggernog':    'is located In the hull of the ship, nearby one of the Pack-a-Punch\'s many spawn locations. '
                         'Can be obtained from a Random Perk Bottle by killing Romero whether or not the player has '
                         'finished the easter egg.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'speed_cola':   'is located Behind the lighthouse, at the end of the Ice Slide. Can also be obtained from a '
+                        'Random Perk Bottle by killing Romero.',
+        'double_tap':   'Located on the deck on the right after getting on the boat.',
+        'mule_kick':    'At the back of the ship, right across the Mystery Box location.',
+        'stamin-up':    'Behind the lighthouse and inside an abandoned house.',
         'deadshot':     '',
-        'phd_flopper':  ''
+        'phd_flopper':  'In the abandoned second floor of the multi-story building that branches off of the lighthouse.'
+                        ' Can also be obtained from a Random Perk Bottle by killing George A. Romero.'
     },
     'shangri_la': {
         'quick_revive': 'can be found in the starting area, along the middle wall.',
-        'juggernog':    'is found Outside the temple next to a pillar by the MPL or on the bridge on the side of the '
-                        'mud pit (Changes the position with Speed Cola). Can be obtained from a Random Perk Bottle by '
-                        'killing a Zombie Monkey as it cycles the power-up.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'is found Outside the temple next to a pillar by the MPL/VMP or on the bridge on the side of '
+                        'the mud pit (Changes the position with Speed Cola). Can be obtained from a Random Perk Bottle '
+                        'by killing a Zombie Monkey as it cycles the power-up.',
+        'speed_cola':   'Near the wooden bridge and the Mud-Pit Maze, or near to the MPL (changes the spawn place with '
+                        'Juggernog). Can also be obtained from a Random Perk Bottle by killing a Zombie Monkey as it '
+                        'cycles the power-up it stole.',
+        'double_tap':   'Will spawn randomly in the mines (changes spawn with Deadshot Daiquiri, PhD Flopper, and '
+                        'Stamin-Up).',
+        'mule_kick':    'In the waterfall area near the box location. Can also be obtained from the Perkaholic or On '
+                        'the House GobbleGum.',
+        'stamin-up':    'Will spawn randomly in one of the rooms underground (changes spawn with PhD Flopper, Double '
+                        'Tap Root Beer and Deadshot Daiquiri).',
         'deadshot':     '',
         'widows_wine':  '',
-        'phd_flopper':  ''
+        'phd_flopper':  'Black ops 1 only. Will spawn randomly in the mines. (changes spawn with Stamin-Up, Double '
+                        'Tap and Deadshot Daiquiri). Can also be obtained from a Random Perk Bottle by killing a '
+                        'zombie monkey as it cycles the power-up after it steals one.'
     },
     'moon': {
         'quick_revive': 'is located in the Receiving Area on the Moon.',
         'juggernog':    'may be found In Area 51 by the teleporter. Changes places with Speed Cola every time the '
                         'player returns to Area 51. It can also be obtained from a Random Perk Bottle by either '
                         'jumping multiple times on the bounce pads or spawning it with a QED. ',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'speed_cola':   'may be found In Area 51. Changes places with Juggernog every time the player returns to Area '
+                        '51. Can also be obtained from a Random Perk Bottle by either repeatedly jumping on the bounce '
+                        'pads or spawning it with a QED.',
+        'double_tap':   'Located on the first floor of the laboratories. Can also be obtained from the Perkaholic or '
+                        'On the House GobbleGum. (Black ops 3)',
+        'mule_kick':    'Outside, near the teleporter to Area 51, and where the AK-74u can be purchased. Can also be '
+                        'obtained from the Perkaholic or On the House GobbleGum.',
+        'stamin-up':    'In the second room of Tunnel 11, to the left of the Semtex.',
         'deadshot':     '',
         'widows_wine':  '',
-        'phd_flopper':  ''
+        'phd_flopper':  'Black ops 1 only. Spawns on the far right side in the Bio-Dome near the Mystery Box spawn. '
+                        'Can also be obtained from a Random Perk Bottle by either jumping multiple times on the bounce '
+                        'pads or spawning one with a QED.'
     },
     'tranzit': {
         'quick_revive': 'can be found inside the starting area in the bus depot.',
         'juggernog':    'is found On the second floor near a corner in the building across from the bank in the town.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
-        'tombstone':    ''
+        'speed_cola':   'is found in the North Highway Diner, against a wall near the door and MP5.',
+        'double_tap':   'Located on the second floor of the barn in Farm.',
+        'stamin-up':    'Inside the bar, right next to the Jet Gun crafting table.',
+        'tombstone':    'Located inside the Power Station after the power is turned on or the door is opened by a '
+                        'Turbine.'
     },
     'town': {
         'quick_revive': 'can be found on the 2nd floor of the bar in the corner near the Mystery Box spawn.',
         'juggernog':    'is found On the second floor near a corner in the building across from the bank in the town.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
-        'tombstone':    ''
+        'speed_cola':   'is found Inside the city hall/bank, in front of some teller windows.',
+        'double_tap':   'Next to the mystery box spawn across from the Semtex location.',
+        'stamin-up':    'Outside the bar, across the road from the Bank and the M14.',
+        'tombstone':    'Located on the street leading to the Mystery Box spawn and Double Tap Root Beer'
     },
     'nuketown': {
         'quick_revive': 'may be found in any perk spawn in the first room when playing solo. Spawns as an air drop '
                         'anywhere on the map during co-op mode.',
         'juggernog':    'Will spawn randomly with all other perks.',
-        'speed_cola':   '',
-        'double_tap':   ''
+        'speed_cola':   'Spawns randomly along with the other perks.',
+        'double_tap':   'Spawns randomly along with the other perks every five rounds (starting on 1, with the '
+                        'exception of solo, then 5, then 10) on stacks of crates.'
     },
     'die_rise': {
         'quick_revive': 'will always spawn in the elevator shaft closest to the purchasable door in the starting area, '
@@ -178,20 +197,27 @@ map_perk_locations = {
         'juggernog':    'Spawns randomly in one of the four elevator shafts in the building with the power switch. It '
                         'trades these positions between games with Double Tap Root Beer, Mule Kick and the Pack-a-Punch'
                         ' Machine.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'phd_flopper':  '',
-        'whos_who': '',
+        'speed_cola':   'Spawns randomly in one of the two elevator shafts either down the hall from the initial spawn,'
+                        ' or in the room two stories below where the Trample Steam is constructed, accessed by removing'
+                        ' a couch obstacle. It shares these positions between games with Who\'s Who. Can also be '
+                        'obtained from a Random Perk Bottle by finishing a Jumping Jack round with 100% accuracy.',
+        'double_tap':   'Randomly spawns in one of the four elevator shafts in the building with the power switch. It '
+                        'trades these positions between games with Juggernog, Mule Kick and the Pack-a-Punch Machine.',
+        'mule_kick':    'Randomly spawns in one of the four elevator shafts in the building with the power switch. It '
+                        'trades these positions between games with Juggernog, Double Tap Root Beer and the Pack-a-Punch'
+                        ' Machine.',
+        'phd_flopper':  'Unobtainable Easter Egg in the first elevator shaft from the spawn room.',
+        'whos_who':     'is located in one of two elevator shafts once the power is turned on. Either the shaft down '
+                        'the hall from the initial spawning area, or in another down below.',
     },
     'mob': {
         'quick_revive': 'is not available in mob of the dead, use afterlife mode instead',
         'juggernog':    'is Down near the Cerberus spawn and Gondola on the docks.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
+        'speed_cola':   'is found In the back of the Warden\'s Office.',
+        'double_tap':   'In the Citadel Tunnels, near the door that leads up to the Warden\'s Office area.',
+        'mule_kick':    'Found on a boat across from the docks along with PhD Flopper as an unobtainable Easter egg.',
         'deadshot':     '',
-        'phd_flopper':  '',
+        'phd_flopper':  'Found on a small boat along with Mule Kick near the dock area as an unobtainable Easter Egg.',
         'electric_cherry': ''
     },
     'buried': {
@@ -199,53 +225,68 @@ map_perk_locations = {
                         'the underground town.',
         'juggernog':    'Behind some debris right next to the Giant\'s cell in a small alley, which needs to be '
                         'destroyed by him before players can access the machine.',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
-        'phd_flopper':  '',
-        'tombstone':    '',
+        'speed_cola':   'In the second floor of the courthouse. Can also be obtained from a Random Perk Bottle by '
+                        'killing all the Ghosts after traversing through the mansion.',
+        'double_tap':   'In the room next the entrance to the mansion, near the teddy bear location.',
+        'mule_kick':    'Found on top of the Gunsmith shop, in front of a Mystery Box spawn.',
+        'stamin-up':    'At the end of the hedge maze, at the stop of the stairs that lead to the Pack-a-Punch Machine.',
+        'phd_flopper':  'Available as one of the Persistent Upgrades by taking a sufficient amount of fall damage '
+                        'repeatedly (Note that it does not protect the player from over-cooked grenades or fall '
+                        'damage). Not physically available nor is obtained from a Random Perk Bottle, which is '
+                        'achieved by killing all the Ghosts after traversing trough the mansion.',
         'vulture_aid':  ''
     },
     'origins': {
         'quick_revive': 'is next to Generator 1 in the spawn room',
-        'juggernog':    '',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'is next to Generator 4 and a Der Wunderfizz spawn.',
+        'speed_cola':   'is found in Across a small wooden platform near Generator 3 inside of the giant robot\'s '
+                        'footprint. It is advised to be conscientious of the robots when purchasing this perk. Can '
+                        'also be obtained at Der Wunderfizz.',
+        'double_tap':   'Not physically present in the map. Can only be obtained through the Der Wunderfizz machine '
+                        'and the Rituals of the Ancients.',
+        'mule_kick':    'Found inside the excavation site, across from the staffs. Also purchasable by using the Der '
+                        'Wunderfizz machine.',
+        'stamin-up':    'Directly next to Generator 5 in a corner.',
         'deadshot':     '',
         'widows_wine':  '',
-        'phd_flopper':  '',
+        'phd_flopper':  'Obtained via the Der Wunderfizz machine. Not physically available.',
         'electric_cherry': ''
     },
     'shadows': {
         'quick_revive': 'can be located in the starting area, to the right of the RK5.',
-        'juggernog':    '',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'Spawns randomly in one of the districts with Speed Cola and Double Tap Root Beer. A Red '
+                        'bottles appear near the district\'s door which tell if the machine is in that district.',
+        'speed_cola':   'Spawns randomly at one of the three perk spawn locations. it shares position with Juggernog '
+                        'and Double Tap.',
+        'double_tap':   'Randomly switches places with Speed Cola and Juggernog randomly through the districts. A '
+                        'yellow bottle marks its location.',
+        'mule_kick':    'In the Broken-down subway, near Widow\'s Wine.',
+        'stamin-up':    'Outside of the spawn room, to the left of the Ice Cream store.',
         'widows_wine':  '',
     },
     'the_giant': {
         'quick_revive': 'is spawned randomly at any of the Perk-a-Cola machine locations, aside from the hidden machine',
-        'juggernog':    '',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'Spawns randomly at any of the Perk-a-Cola machine locations, aside from the hidden machine.',
+        'speed_cola':   'Spawns randomly at any of the Perk-a-Cola machine locations, aside from the hidden machine.',
+        'double_tap':   'Spawns randomly at any of the Perk-a-Cola machine locations, aside from the hidden machine.',
+        'mule_kick':    'Spawns randomly at any of the Perk-a-Cola machine locations, aside from the hidden machine.',
+        'stamin-up':    'In the left hallway, on small area covered by snow. It can only be received by throwing a '
+                        'Monkey Bomb into each teleporter and teleporting them to the mainframe. Even if the steps are '
+                        'followed, there\'s a chance of getting Deadshot Daiquiri instead of this Perk-a-Cola.',
         'deadshot':     '',
         'widows_wine':  '',
         'electric_cherry': ''
     },
     'der_eisendrache':  {
         'quick_revive': 'may be located in the starting room, near the RK5.',
-        'juggernog':    '',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'is located in the room that connects the starting room to the pyramid room, next to the KN-44.',
+        'speed_cola':   'spawns Inside the church, to the left right beside the staircase heading to the pyramid room.',
+        'double_tap':   'Located to the right of the castle entrance, right under the bridge looking out.',
+        'mule_kick':    'Found in the corridor next to the big open hole below the room where the fire arrow can be '
+                        'acquired.',
+        'stamin-up':    'In the same room as the Power switch, to the right of the switch as the player enters the '
+                        'room. Can also be obtained from the Der Wunderfizz machine or the Perkaholic or On the House '
+                        'GobbleGum.',
         'deadshot':     '',
         'widows_wine':  '',
         'electric_cherry': ''
@@ -253,33 +294,42 @@ map_perk_locations = {
     'zetsubou': {
         'quick_revive': 'is Located on the other side of the bunker door in co-op. Dropped via airplane at the start of'
                         ' round 2 in solo, opposite side of the Trials of the Ancients of by the main gate to Lab A.',
-        'juggernog':    '',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'Will spawn randomly via airplane on round 2 or round 6. Located on the other side of the '
+                        'bunker door in solo.',
+        'speed_cola':   'Switches between the entrance to Lab A, Next to the spider boss entrance and Lab B (Next to '
+                        'the wall-buy for the ICR-1) with Double Tap.',
+        'double_tap':   'Switches between Lab A (Next to the spider boss entrance) and Lab B (Next to the wall-buy for '
+                        'the ICR-1) with Speed Cola.',
+        'mule_kick':    'In the room before the underwater tunnels where the plant part for the KT-4 and the wheel '
+                        'part for the Pack-a-Punch Machine can be found.',
+        'stamin-up':    'Randomizes locations with the other perks except Mule Kick. Can also be obtained from the '
+                        'Perkaholic or On the House GobbleGum.',
         'deadshot':     '',
         'widows_wine':  '',
         'electric_cherry': ''
     },
     'gorod_krovi': {
         'quick_revive': 'will be found In Belinski Square, to the left of the first door.',
-        'juggernog':    '',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'can be found On the second floor of the Department Store, to the right of the staircase '
+                        'leading down towards the Operations Bunker.',
+        'speed_cola':   'is In the balcony of the Supply Depot building.',
+        'double_tap':   'In the first room of the Tank Factory, near its entrance.',
+        'mule_kick':    'Near the entrance to the Operations Bunker coming from the Department Store.',
+        'stamin-up':    'In the Infirmary. Can also be obtained from the Der Wunderfizz machine or the Perkaholic or '
+                        'On the House GobbleGum.',
         'deadshot':     '',
         'widows_wine':  '',
         'electric_cherry': ''
     },
     'revelations': {
         'quick_revive': 'can be found In the starting room, directly in front of The House.',
-        'juggernog':    '',
-        'speed_cola':   '',
-        'double_tap':   '',
-        'mule_kick':    '',
-        'stamin-up':    '',
+        'juggernog':    'may be found On the second floor of the Nacht der Untoten section of the map, in front of the '
+                        'stairs from the old starting room.',
+        'speed_cola':   'is In Verruckt in the room straight forward from the corruption engine.',
+        'double_tap':   'on the Origins Side of the map by the power generator to the right of the mystery box location',
+        'mule_kick':    'Inside the cafeteria in Mob of the Dead, where Deadshot Daiquiri would be in Cell Block.',
+        'stamin-up':    'On the Shangri-La island, where Quick Revive was originally found. Can also be obtained from '
+                        'the Der Wunderfizz machine or the Perkaholic or On the House GobbleGum.',
         'deadshot':     '',
         'widows_wine':  '',
         'electric_cherry': ''
@@ -300,8 +350,7 @@ gobblegum_data = {
     'always_done_swiftly': {
         'description': 'Walk faster when aiming, and Raise and lower your weapon to aim more quickly.'
                        'Activates Immediately, Lasts 3 Rounds',
-        'type': 'classic',
-        'url': 'https://vignette.wikia.nocookie.net/callofduty/images/3/31/Always_Done_Swiftly_GobbleGum_BO3.png/revision/latest/scale-to-width-down/185?cb=20170526110925'
+        'type': 'classic'
     },
     'arms_grace': {
         'description': 'Respawn with the guns the player had when they bled out. '
