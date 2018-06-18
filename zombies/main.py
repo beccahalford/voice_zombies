@@ -56,7 +56,7 @@ def get_map_perk_location():
     if not perk['id']:
         if not perk['raw']:
             return elicit_slot('perk', 'What\'s the perk name?')
-        return elicit_slot('perk', render_template('map_unknown', user_value=perk['raw']))
+        return elicit_slot('perk', render_template('perk_unknown', user_value=perk['raw']))
 
     map_id = map['id']
     map_name = map['value']
@@ -70,7 +70,7 @@ def get_map_perk_location():
     perk_id = perk['id']
 
     if perk_id not in map_perk_locations[map_id]:
-        return statement(render_template('perk_location_confirmation', map=map_name, perk=perk_name))
+        return statement(render_template('perk_unavailble', map=map_name, perk=perk_name))
 
     if not intent_confirmed():
         return confirm_intent(render_template('perk_location_confirmation', map=map_name, perk=perk_name))
