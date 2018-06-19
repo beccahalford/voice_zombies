@@ -3,6 +3,7 @@ import random
 from flask import Flask, render_template, url_for
 from flask_ask import Ask, statement, request, elicit_slot, confirm_intent
 
+from zombies.client import get_rnd_fact, get_map_facts
 from zombies.facts import random_facts, map_facts, map_perk_locations, gobblegum_data
 from zombies.utils import get_slot
 
@@ -13,7 +14,8 @@ ask = Ask(app, '/')
 @ask.intent('RandomFactIntent')
 def get_random_fact():
 
-    fact = random.choice(random_facts)
+    # fact = random.choice(random_facts)
+    fact = get_rnd_fact()
     speech_text = fact
     return statement(speech_text).simple_card("Random Zombies Fact", speech_text)
 
@@ -30,17 +32,18 @@ def get_map_fact():
     map_id = slot['id']
     map_name = slot['value']
 
-    if map_id not in map_facts:
-        return elicit_slot('map', render_template('no_map_entry', map=map_name))
+    # if map_id not in map_facts:
+    #     return elicit_slot('map', render_template('no_map_entry', map=map_name))
 
-    facts = map_facts[map_id]
-    if not len(facts) or facts == '':
-        return elicit_slot('map', render_template('no_map_entry', map=map_name))
+    # facts = map_facts[map_id]
+    fact = get_map_facts(map_id)
+
+    if not len(fact) or fact == '':
+        return elicit_slot('map', render_template('no_map_facts', map=map_name))
 
     if not intent_confirmed():
         return confirm_intent(render_template('map_confirmation', map=map_name))
 
-    fact = random.choice(facts)
     return statement(fact)
 
 
