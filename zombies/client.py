@@ -34,4 +34,49 @@ def get_map_facts(map_id):
     return fact['description']
 
 
+def get_perk_location(map_id, perk_id):
+    url = base_url + '/zombies/api/perk/?map={map_id}&perk_id={perk_id}'.format(map_id=map_id, perk_id=perk_id)
+    response = requests.get(url, headers={
+        'Content-type': 'application/json',
+        'Authorization': 'Token {}'.format(token)
+    })
+
+    if not len(response.json()):
+        return ''
+
+    perk_data = response.json()
+
+    return perk_data[0]['location']
+
+
+def get_gobblegum(gobblegum_id):
+    url = base_url + '/zombies/api/gobblegum/?gobblegum_id={gobblegum_id}'.format(gobblegum_id=gobblegum_id)
+    response = requests.get(url, headers={
+        'Content-type': 'application/json',
+        'Authorization': 'Token {}'.format(token)
+    })
+
+    if not len(response.json()):
+        return ''
+
+    gobblegum_data = response.json()
+
+    return gobblegum_data[0]['description']
+
+
+def get_map(map_id):
+    url = base_url + '/zombies/api/map/?map_id={map_id}'.format(map_id=map_id)
+    response = requests.get(url, headers={
+        'Content-type': 'application/json',
+        'Authorization': 'Token {}'.format(token)
+    })
+
+    if not len(response.json()):
+        return ''
+
+    map = response.json()
+
+    return map
+
+
 
