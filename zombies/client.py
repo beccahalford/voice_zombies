@@ -35,18 +35,24 @@ def get_map_facts(map_id):
 
 
 def get_perk_location(map_id, perk_id):
-    url = base_url + '/zombies/api/perk/?map={map_id}&perk_id={perk_id}'.format(map_id=map_id, perk_id=perk_id)
+    url = base_url + '/zombies/api/map/{map_id}'.format(map_id=map_id)
     response = requests.get(url, headers={
         'Content-type': 'application/json',
         'Authorization': 'Token {}'.format(token)
     })
 
-    if not len(response.json()):
-        return ''
+    map_perks = response.json()
 
-    perk_data = response.json()
+    if len(map_perks['perks']) == 0:
+        return 'no_perk_location'
 
-    return perk_data[0]['location']
+    try:
+        perk = [perk for perk in map_perks['perks'] if perk['perk_id'] == perk_id][0]
+    except IndexError:
+        perk = None
+        return perk
+
+    return perk['location']
 
 
 def get_gobblegum(gobblegum_id):
@@ -62,21 +68,3 @@ def get_gobblegum(gobblegum_id):
     gobblegum_data = response.json()
 
     return gobblegum_data[0]['description']
-
-
-def get_map(map_id):
-    url = base_url + '/zombies/api/map/?map_id={map_id}'.format(map_id=map_id)
-    response = requests.get(url, headers={
-        'Content-type': 'application/json',
-        'Authorization': 'Token {}'.format(token)
-    })
-
-    if not len(response.json()):
-        return ''
-
-    map = response.json()
-
-    return map
-
-
-

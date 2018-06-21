@@ -3,7 +3,7 @@ import random
 from flask import Flask, render_template, url_for
 from flask_ask import Ask, statement, request, elicit_slot, confirm_intent
 
-from zombies.client import get_rnd_fact, get_map_facts, get_gobblegum, get_perk_location, get_map
+from zombies.client import get_rnd_fact, get_map_facts, get_gobblegum, get_perk_location
 from zombies.utils import get_slot
 
 app = Flask(__name__)
@@ -57,22 +57,22 @@ def get_map_perk_location():
 
     map_id = map['id']
     map_name = map['value']
+    perk_id = perk['id']
     perk_name = perk['value']
 
     if map_id == 'nacht':
         return statement('Nacht Der Untoten does not have any perks.')
-
-        # return elicit_slot('map', render_template('no_perk_location', map=map_name))
-
-    perk_id = perk['id']
 
     if not intent_confirmed():
         return confirm_intent(render_template('perk_location_confirmation', map=map_name, perk=perk_name))
 
     perk_location = get_perk_location(map_id, perk_id)
 
-    if perk_location == '':
+    if perk_location is None:
         return statement(render_template('perk_unavailble', map=map_name, perk=perk_name))
+
+    if perk_location == 'no_perk_location':
+        return statement(render_template('no_perk_location', map=map_name, perk=perk_name))
 
     return statement(render_template('perk_location',
                                      map=map_name,
