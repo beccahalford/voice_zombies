@@ -1,70 +1,57 @@
 import random
 import requests
 
-base_url = 'http://localhost:8000'
-token = 'aa26cf509cd32f729c00fad75546ab3b8a0381e3'
 
+class Client:
 
-def get_rnd_fact():
-    url = base_url + '/zombies/api/random_fact/'
-    response = requests.get(url, headers={
-        'Content-type': 'application/json',
-        'Authorization': 'Token {}'.format(token)
-    })
+    token = 'aa26cf509cd32f729c00fad75546ab3b8a0381e3'
 
-    facts = response.json()
-    fact = random.choice(facts)
+    def __init__(self):
+        self.session = requests.session()
+        self.session.headers.update(
+            {'Content-type': 'application/json',
+             'Authorization': 'Token {}'.format(self.token)}
+        )
+        self.base_url = 'http://localhost:8000/zombies/api'
 
-    return fact['description']
+    def get_random_fact(self):
+        url = '{base_url}/random_fact'.format(base_url=self.base_url)
 
+        facts = self.session.get(url).json()
+        fact = random.choice(facts)
 
-def get_map_facts(map_id):
-    url = base_url + '/zombies/api/map_fact/?map={map_id}'.format(map_id=map_id)
-    response = requests.get(url, headers={
-        'Content-type': 'application/json',
-        'Authorization': 'Token {}'.format(token)
-    })
+        return fact['description']
 
-    if not len(response.json()):
-        return ''
+    def get_map_fact(self, map_id):
+        url = '{base_url}/map_fact/?map={map_id}'.format(base_url=self.base_url, map_id=map_id)
+        map_facts = self.session.get(url).json()
+        if not len(map_facts):
+            return ''
 
-    map_facts = response.json()
-    fact = random.choice(map_facts)
+        fact = random.choice(map_facts)
 
-    return fact['description']
+        return fact['description']
 
+    def get_perk_location(self, map_id, perk_id):
+        url = '{base_url}/map/{map_id}'.format(base_url=self.base_url, map_id=map_id)
+        map_perks = self.session.get(url).json()
 
-def get_perk_location(map_id, perk_id):
-    url = base_url + '/zombies/api/map/{map_id}'.format(map_id=map_id)
-    response = requests.get(url, headers={
-        'Content-type': 'application/json',
-        'Authorization': 'Token {}'.format(token)
-    })
+        if len(map_perks['perks']) == 0:
+            return 'no_perk_location'
 
-    map_perks = response.json()
+        try:
+            perk = [perk for perk in map_perks['perks'] if perk['perk_id'] == perk_id][0]
+        except IndexError:
+            perk = None
+            return perk
 
-    if len(map_perks['perks']) == 0:
-        return 'no_perk_location'
+        return perk['location']
 
-    try:
-        perk = [perk for perk in map_perks['perks'] if perk['perk_id'] == perk_id][0]
-    except IndexError:
-        perk = None
-        return perk
+    def get_gobblegum(self, gobblegum_id):
+        url = '{base_url}/gobblegum/?gobblegum_id={gobblegum_id}'.format(base_url=self.base_url, gobblegum_id=gobblegum_id)
+        gobblegum_data = self.session.get(url).json()
 
-    return perk['location']
+        if not len(gobblegum_data):
+            return ''
 
-
-def get_gobblegum(gobblegum_id):
-    url = base_url + '/zombies/api/gobblegum/?gobblegum_id={gobblegum_id}'.format(gobblegum_id=gobblegum_id)
-    response = requests.get(url, headers={
-        'Content-type': 'application/json',
-        'Authorization': 'Token {}'.format(token)
-    })
-
-    if not len(response.json()):
-        return ''
-
-    gobblegum_data = response.json()
-
-    return gobblegum_data[0]['description']
+        return gobblegum_data[0]['description']

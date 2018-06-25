@@ -2,18 +2,18 @@ import random
 
 from flask import Flask, render_template, url_for
 from flask_ask import Ask, statement, request, elicit_slot, confirm_intent
-
-from zombies.client import get_rnd_fact, get_map_facts, get_gobblegum, get_perk_location
+from zombies.client import Client
 from zombies.utils import get_slot
 
 app = Flask(__name__)
 ask = Ask(app, '/')
+client = Client()
 
 
 @ask.intent('RandomFactIntent')
 def get_random_fact():
 
-    fact = get_rnd_fact()
+    fact = client.get_random_fact()
     speech_text = fact
     return statement(speech_text).simple_card("Random Zombies Fact", speech_text)
 
@@ -30,7 +30,7 @@ def get_map_fact():
     map_id = slot['id']
     map_name = slot['value']
 
-    fact = get_map_facts(map_id)
+    fact = client.get_map_fact(map_id)
 
     if not len(fact) or fact == '':
         return elicit_slot('map', render_template('no_map_facts', map=map_name))
@@ -66,7 +66,7 @@ def get_map_perk_location():
     if not intent_confirmed():
         return confirm_intent(render_template('perk_location_confirmation', map=map_name, perk=perk_name))
 
-    perk_location = get_perk_location(map_id, perk_id)
+    perk_location = client.get_perk_location(map_id, perk_id)
 
     if perk_location is None:
         return statement(render_template('perk_unavailble', map=map_name, perk=perk_name))
@@ -91,7 +91,7 @@ def get_gobblegum_data():
 
     gobblegum_id = slot['id']
     gobblegum = slot['value']
-    gobblegum_desc = get_gobblegum(gobblegum_id)
+    gobblegum_desc = client.get_gobblegum(gobblegum_id)
 
     gobblegum_url = url_for('static', filename='gobblegum/'+slot['id']+'.png', _external=True)
 
